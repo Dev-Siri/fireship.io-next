@@ -1,0 +1,19 @@
+.basic {
+  @apply text-gray4;
+}
+
+.active {
+  @apply text-green-500;
+}
+
+.cancelled {
+  @apply text-yellow-500;
+}
+
+.enterprise {
+  @apply text-blue-500;
+}
+
+.lifetime {
+  @apply text-green-500;
+}

@@ -1,0 +1,11 @@
+input:checked + .slider {
+  @apply bg-green-500;
+}
+
+input:focus + .slider {
+  @apply shadow-md;
+}
+
+input:checked + .slider:before {
+  @apply translate-x-5;
+}

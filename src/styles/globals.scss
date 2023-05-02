@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "button.scss";
+@import "special-effects.scss";
+@import "autoplay-toggle.scss";
+@import "scroll-view.scss";
+@import "user-data.scss";
+@import "courses.scss";
+@import "lessons.scss";
+@import "syntax.scss";
+@import "mixins.scss";
+@import "tags.scss";
+@import "pricing.scss";
+@import "ui.scss";
+
+body {
+  @apply dark:bg-gray7 dark:text-gray1 min-h-screen bg-fixed;
+  background: linear-gradient(176deg, rgba(18, 24, 27, 1) 50%, rgba(32, 39, 55, 1) 100%);
+  @include scrollbar;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-display font-normal;
+}
+
+svg {
+  width: auto;
+}
+
+figure img {
+  @apply mx-auto;
+}
+
+@layer utilities {
+  .fill-rule-evenodd {
+    fill-rule: evenodd;
+  }
+
+  .fill-nonzero {
+    fill-rule: nonzero;
+  }
+
+  .before-content-empty::before {
+    content: "";
+  }
+
+  .container {
+    @apply max-w-screen-2xl mx-auto px-3 md:px-8;
+  }
+
+  .grid-list {
+    @apply grid grid-cols-1 auto-cols-max gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 list-none;
+  }
+
+  ::cue {
+    @apply text-lg absolute bottom-0;
+  }
+}

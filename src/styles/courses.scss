@@ -1,0 +1,47 @@
+.active-chapter {
+  @apply text-white font-bold bg-orange-500;
+}
+
+.utterances {
+  @apply max-w-full;
+}
+
+.pagination {
+  @apply flex list-none justify-center;
+  @media screen and (max-width: 768px) {
+    @apply flex-wrap p-0;
+  }
+
+  .page-item {
+    @apply mb-1 p-0 active:disabled:opacity-50 active:disabled:-translate-y-2 active:disabled:cursor-default disabled:bg-none;
+    a {
+      @apply text-gray3 no-underline bg-black bg-opacity-30 pt-[1em] mr-[2em];
+    }
+  }
+}
+
+.hi {
+  @apply text-[rgb(203,255,143)] bg-[#4e5556] pr-1 rounded-sm font-normal;
+}
+
+.tweet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-column-gap: 16px;
+  max-width: 1200px;
+  margin: 48px auto;
+  padding-bottom: 24px;
+  justify-items: center;
+}
+
+.frame-full {
+  width: 100%;
+  min-height: 500px;
+}
+
+quiz-modal {
+  h5,
+  h6 {
+    @apply text-white font-sans font-bold;
+  }
+}

@@ -1,0 +1,17 @@
+@media (prefers-reduced-motion: no-preference) {
+  .top {
+    transform: translateY(-20px);
+    filter: hue-rotate(90deg);
+    @apply relative transition-all duration-500 opacity-0;
+  }
+  .right {
+    transform: translateX(-20px);
+    filter: hue-rotate(90deg);
+    @apply relative transition-all duration-500 opacity-0;
+  }
+  .scroll-show-visible {
+    transform: translateX(0);
+    filter: hue-rotate(0);
+    opacity: 1;
+  }
+}
