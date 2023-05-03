@@ -12,6 +12,7 @@ import UserProgress from "@/components/UserProgress";
 
 const DeleteAccount = lazy(() => import("@/components/DeleteAccount"));
 const SignOutButton = lazy(() => import("@/components/SignOutButton"));
+const UserCharges = lazy(() => import("@/components/UserCharges"));
 const ModalAction = lazy(() => import("@/components/ModalAction"));
 const ChangeEmail = lazy(() => import("@/components/ChangeEmail"));
 const SeatAssign = lazy(() => import("@/components/SeatAssign"));
@@ -93,7 +94,9 @@ export default function Dashboard() {
             <h2 className="text-5xl text-center">Manage account</h2>
             <div className="mx-auto w-24 h-1 my-12 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"></div>
             <div className="my-6">
-              <user-charges></user-charges>
+              <UserCharges>
+                <LoadingSpinner />
+              </UserCharges>
             </div>
             <div className="my-6">
               <user-invoices></user-invoices>
