@@ -14,6 +14,7 @@ const DeleteAccount = lazy(() => import("@/components/DeleteAccount"));
 const SignOutButton = lazy(() => import("@/components/SignOutButton"));
 const ModalAction = lazy(() => import("@/components/ModalAction"));
 const ChangeEmail = lazy(() => import("@/components/ChangeEmail"));
+const SeatAssign = lazy(() => import("@/components/SeatAssign"));
 
 export const metadata = {
   title: "Dashboard",
@@ -85,7 +86,9 @@ export default function Dashboard() {
                 Use the form below to assign your seats. Each account will get a welcome email and have full access after signing in. You can always
                 revoke access later.
               </p>
-              <seat-assign></seat-assign>
+              <SeatAssign>
+                <LoadingSpinner />
+              </SeatAssign>
             </IfEnterprise>
             <h2 className="text-5xl text-center">Manage account</h2>
             <div className="mx-auto w-24 h-1 my-12 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full"></div>

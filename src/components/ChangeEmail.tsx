@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState, type PropsWithChildren } from "react";
+import { useState, type PropsWithChildren } from "react";
 
 import useGlobalStore from "@/store/globalData";
 
@@ -9,8 +9,6 @@ export default function ChangeEmail({ children }: PropsWithChildren) {
   const [confirmed, setConfirmed] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [email, setEmail] = useState("");
-
-  const emailEl = useRef<HTMLInputElement>(null);
 
   async function getSession() {
     const { callUserAPI, firebaseSignOut } = await import("@/utils/firebase");
@@ -42,10 +40,9 @@ export default function ChangeEmail({ children }: PropsWithChildren) {
         type="email"
         className="outline-none border-solid border-gray6 text-white bg-gray7 p-3 w-full font-sans mr-3 my-4"
         onChange={e => {
-          setIsValid(emailEl.current!.validity.valid);
+          setIsValid(e.target.validity.valid);
           setEmail(e.target.value);
         }}
-        ref={emailEl}
         placeholder="new email"
         required
       />
