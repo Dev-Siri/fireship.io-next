@@ -30,7 +30,7 @@ So overall, I have tried to keep the same kinda structure and same amount of com
 But ofcourse I wasn't able to replicate the entire structure of the project 100% (More like 54%). There are many differences and some sacrifices I had to make because I simply didn't have any control over it. <br />
 Also, due to my obsession for performance with a non-performant framework, I did a lot of weird & funky hacks that help ship less JS to the client and use GPU rendering with CSS. The "Less JS" ones are used a lot but you won't find many "Forced CSS GPU rendering" since I used them on certain things only.
 
-- This ships 29.72% less client-side JS.
+- This ships 15.44% less client-side JS.
 - `<web-components />` are now all `<JSX />`. The JSX components can also be used in Markdown with MDX
 - Removed the Vimeo Video Player from the home screen. But since I don't have any control over where the vimeo videos are hosted, I had to DOWNLOAD the home screen video. IDK if its legal or not but that was my only option to reduce the client-side JS. But downloading was too repetitive for me so in the actual courses, the default vimeo player is still used. But hey, atleast the home page's JS is reduced ¯\\\_(ツ)\_/¯
 

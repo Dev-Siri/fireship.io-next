@@ -1,3 +1,4 @@
+"use client";
 import { useState, type PropsWithChildren } from "react";
 
 const btn =
