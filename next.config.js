@@ -10,7 +10,6 @@ import rehypeSlug from "rehype-slug";
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
   experimental: {
-    appDir: true,
     cpus: Math.round(cpus().length / 2),
     mdxRs: true,
   },
