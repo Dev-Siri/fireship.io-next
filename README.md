@@ -58,9 +58,9 @@ Due to this reason, I have left two of the most important implementations empty:
 
 ## WARNING
 
-I HAVE NOT TESTED SOME PARTS AND I HAVE ALSO LEFT SOME FUNCTIONALITY BROKEN SINCE I WAS **NOT** ABLE TO FIGURE OUT THE LOGIC. YOU HAVE TO FIX THESE ISSUES YOURSELF BEFORE DEPLOYING THIS.
+I have not tested some parts and I have also left some functionality broken since I was **not** able to figure out the logic. You have to fix these issues yourself before deploying this.
 
-I HAVE ALSO NOT TESTED ANY FIREBASE SERVICES PROPERLY. SINCE I OBVIOUSLY CAN'T TEST PROD SINCE I DON'T HAVE ACCESS TO THE FIREBASE PROJECT, I CAN'T TEST IT WITHOUT GETTING BLOCKED BY INSUFFICIENT PERMISSION OR SOMETHING ELSE. AND I KNOW THERE ARE SOME WAYS TO TEST IT LOCALLY, BUT I AM NOT THAT GOOD WITH FIREBASE TO FIGURE IT OUT SO IF YOU KNOW AND FIND AN ISSUE, JUST HIT ME UP WITH A PR.
+I have also not tested any firebase services properly. Since I obviously can't test prod since I don't have access to the firebase project, I can't test it without getting blocked by insufficient permission or something else. And I know there are some ways to test it locally, but I am not that good with firebase to figure it out so if you know and find an issue, just hit me up with a pr.
 
 ## Do you even want to deploy this mess?
 
