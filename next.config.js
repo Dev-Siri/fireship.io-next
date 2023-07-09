@@ -12,6 +12,7 @@ const nextConfig = {
   experimental: {
     cpus: Math.round(cpus().length / 2),
     mdxRs: true,
+    serverActions: true,
   },
   typescript: { ignoreBuildErrors: true },
   images: {

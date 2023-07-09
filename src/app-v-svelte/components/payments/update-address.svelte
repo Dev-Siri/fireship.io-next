@@ -1,5 +1,3 @@
-<svelte:options tag="update-address" />
-
 <script lang="ts">
   import { create } from "zustand";
   import { toast } from "../../../stores";
@@ -51,50 +49,23 @@
 {#if show}
   <button on:click={() => (show = false)}> Hide Address </button>
 
-  <p>
-    This form will update your address in stripe and be reflected on invoices
-  </p>
+  <p>This form will update your address in stripe and be reflected on invoices</p>
 
   <form>
     <label for="name">Name</label>
     <input name="name" type="text" maxlength="100" bind:value={$name} />
     <label for="line1">Line 1</label>
-    <input
-      name="line1"
-      type="text"
-      maxlength="100"
-      bind:value={$address.line1}
-    />
+    <input name="line1" type="text" maxlength="100" bind:value={$address.line1} />
     <label for="line2">Line 2</label>
-    <input
-      name="line2"
-      type="text"
-      maxlength="100"
-      bind:value={$address.line2}
-    />
+    <input name="line2" type="text" maxlength="100" bind:value={$address.line2} />
     <label for="city">City</label>
     <input name="city" type="text" maxlength="50" bind:value={$address.city} />
     <label for="state">State</label>
-    <input
-      name="state"
-      type="text"
-      maxlength="50"
-      bind:value={$address.state}
-    />
+    <input name="state" type="text" maxlength="50" bind:value={$address.state} />
     <label for="postal_code">Postal Code</label>
-    <input
-      name="postal_code"
-      type="text"
-      maxlength="20"
-      bind:value={$address.postal_code}
-    />
+    <input name="postal_code" type="text" maxlength="20" bind:value={$address.postal_code} />
     <label for="country">Country Code (2 Digit)</label>
-    <input
-      name="country"
-      type="text"
-      maxlength="2"
-      bind:value={$address.country}
-    />
+    <input name="country" type="text" maxlength="2" bind:value={$address.country} />
   </form>
 
   <button class="update" on:click={changeAddress}>

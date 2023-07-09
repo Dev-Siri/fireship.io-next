@@ -1,37 +1,32 @@
 "use client";
-import { useRef, useState, type FormEvent } from "react";
+import { useRef, useState } from "react";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
-export default function EmailSignin() {
+import { usePathname } from "next/navigation";
+import type { SignInState } from "./AppSignin";
+
+interface Props {
+  state: SignInState;
+}
+
+export default function EmailSignin({ state }: Props) {
   const [isValid, setIsValid] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [confirmation, setConfirmation] = useState("");
-  const [error, setError] = useState("");
+  const pathname = usePathname();
+
   const emailEl = useRef<HTMLInputElement>(null);
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    const { sendPasswordlessEmail } = await import("@/utils/firebase");
-
-    setLoading(true);
-    const { res, serverError } = await sendPasswordlessEmail(emailEl.current!.value, window.location.href);
-
-    setLoading(false);
-    setError(serverError!);
-    setConfirmation(res);
-  }
+  const { pending } = useFormStatus();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label className="text-gray3 font-bold" htmlFor="email">
-        Email
-      </label>
+    <>
+      <input type="hidden" name="pathname" value={pathname} />
       <input
         className={`bg-gray7 bg-opacity-30 text-white text-lg block py-3 px-1 w-full border-b-4 border-b-white border-t-0 border-r-0 border-l-0 rounded-none outline-none focus-visible:outline-none valid:border-b-green-500 ${
           isTouched && "border-b-4 border-b-blue-500"
         }`}
         type="email"
         name="email"
+        id="email"
         ref={emailEl}
         onChange={() => setIsValid(emailEl.current!.validity.valid)}
         onFocus={() => {
@@ -39,15 +34,16 @@ export default function EmailSignin() {
         }}
         required
       />
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      {confirmation && <p className="text-green-500 text-sm">{confirmation}</p>}
-      <input
+      {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
+      {state.confirmation && <p className="text-green-500 text-sm">{state.confirmation}</p>}
+      <button
         className={`bg-blue-500 font-sans text-white font-bold inline-block text-center shadow-md px-4 py-3 my-2 w-auto border-none cursor-pointer hover:bg-blue-500 ${
-          (!isValid || loading) && "opacity-50 cursor-not-allowed"
+          (!isValid || pending) && "opacity-50 cursor-not-allowed"
         }`}
         type="submit"
-        value={loading ? "sending..." : "send"}
-      />
-    </form>
+      >
+        {pending ? "sending..." : "send"}
+      </button>
+    </>
   );
 }

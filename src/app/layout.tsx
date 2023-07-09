@@ -56,7 +56,7 @@ const cubano = localFont({
   variable: "--font-cubano",
 });
 
-const poppins = Montserrat({
+const montserrat = Montserrat({
   weight: ["500", "700"],
   display: "swap",
   preload: true,
@@ -66,7 +66,7 @@ const poppins = Montserrat({
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="en" className={`dark block text-[13px] lg:text-base scroll-smooth ${cubano.variable} ${poppins.variable}`}>
+    <html lang="en" className={`dark block text-[13px] lg:text-base scroll-smooth ${cubano.variable} ${montserrat.variable}`}>
       <body>
         <ClientData>
           <KeyBindings>

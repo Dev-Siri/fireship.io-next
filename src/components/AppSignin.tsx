@@ -1,3 +1,5 @@
+import { sendPasswordlessEmail } from "@/utils/firebase";
+import { revalidatePath } from "next/cache";
 import lazy from "next/dynamic";
 
 const GoogleSignin = lazy(() => import("./GoogleSignin"));
@@ -5,12 +7,44 @@ const ModalDialog = lazy(() => import("./ModalDialog"));
 const EmailSignin = lazy(() => import("./EmailSignin"));
 const AppleSignin = lazy(() => import("./AppleSignin"));
 
+export interface SignInState {
+  confirmation: string;
+  error: string | null;
+}
+
+let signInState: SignInState = {
+  confirmation: "",
+  error: null,
+};
+
+async function passwordLessSignin(formData: FormData) {
+  "use server";
+  const email = formData.get("email");
+  const pathname = formData.get("pathname");
+
+  if (!email || email instanceof Blob) return;
+
+  const { res, serverError } = await sendPasswordlessEmail(email);
+
+  signInState = {
+    confirmation: res,
+    error: serverError,
+  };
+
+  revalidatePath(pathname instanceof Blob || !pathname ? "/" : pathname);
+}
+
 export default function AppSignin() {
   return (
     <ModalDialog name="signin" esc>
       <h1 className="text-[2em] text-gray1 font-body font-bold my-5">Login</h1>
       <p className="my-5">With magic email link:</p>
-      <EmailSignin />
+      <form action={passwordLessSignin}>
+        <label className="text-gray3 font-bold" htmlFor="email">
+          Email
+        </label>
+        <EmailSignin state={signInState} />
+      </form>
       <p className="my-4">Or with account:</p>
       <GoogleSignin>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 mr-2 relative top-1" width="24" height="24">

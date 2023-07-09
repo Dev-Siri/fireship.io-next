@@ -5,12 +5,12 @@ import useGlobalStore from "@/store/globalData";
 
 export default function ClientData({ children }: PropsWithChildren) {
   useEffect(() => {
-    const gatherUserData = async () => {
+    async function gatherUserData() {
       const response = await fetch("/api/user-data");
       const userInfo = await response.json();
 
       useGlobalStore.setState(userInfo);
-    };
+    }
 
     gatherUserData();
   }, []);

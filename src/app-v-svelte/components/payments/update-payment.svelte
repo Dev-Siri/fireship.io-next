@@ -1,5 +1,3 @@
-<svelte:options tag="update-payment" />
-
 <script lang="ts">
   import { callUserAPI } from "../../../utils/firebase";
   let loading = false;
@@ -53,11 +51,8 @@
       <ul>
         {#each methods as method}
           <li>
-            {method.card.brand} ending in {method.card.last4} expires {method
-              .card.exp_month}/{method.card.exp_year}
-            <span class="warn" on:click={() => detachMethod(method.id)}
-              >delete</span
-            >
+            {method.card.brand} ending in {method.card.last4} expires {method.card.exp_month}/{method.card.exp_year}
+            <span class="warn" on:click={() => detachMethod(method.id)}>delete</span>
           </li>
         {/each}
       </ul>
